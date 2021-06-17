@@ -1,0 +1,20 @@
+.products_grid {
+    display: grid;
+    grid-template-columns: 390px 390px 390px;
+    justify-content: space-between;
+}
+
+.innerText {
+    width: 100%;
+    font-size: 42px;
+    display: flex;
+    font-weight: 400;
+    justify-items: start;
+    margin: 5rem auto;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

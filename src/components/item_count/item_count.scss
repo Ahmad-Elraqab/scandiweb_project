@@ -1,0 +1,32 @@
+.item_column {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    color: black !important;
+}
+
+.view {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.item_src {
+    height: 100%;
+    width: 150;
+    margin-left: 1rem;
+
+    img {
+        height: 100%;
+        width: 150px;
+        object-fit: cover;
+    }
+}
+
+.text_vlaue {
+    font-size: 18px;
+    font-weight: 600;
+}

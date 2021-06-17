@@ -1,0 +1,14 @@
+.card_layout {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid hsl(0, 0%, 90%);
+    padding: 3rem 0;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.items {
+    height: 100%;
+}

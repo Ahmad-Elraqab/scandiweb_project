@@ -1,0 +1,32 @@
+.size_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &:last-child {
+        margin: 0 !important;
+    }
+}
+
+.size {
+    width: 19%;
+    height: 45px;
+    padding: 0.5rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid black;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.selected {
+        background-color: black !important;
+        color: white !important;
+    }
+}
