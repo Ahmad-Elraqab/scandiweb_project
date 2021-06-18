@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import Navigation from "../navigation/navigation"
+import Notification from "../notification/notification"
+
 import "./template.scss"
 
 class Template extends Component {
@@ -17,8 +19,11 @@ class Template extends Component {
                     <Navigation />
                 </div>
 
-                {this.props.children}
 
+                {this.props.children}
+                <div className="notification">
+                    <Notification />
+                </div>
             </div>
         )
     }

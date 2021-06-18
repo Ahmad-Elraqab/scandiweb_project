@@ -13,13 +13,13 @@
 .size {
     width: 19%;
     height: 45px;
+    border: 2px solid black;
     padding: 0.5rem;
     font-weight: 500;
-    display: flex;
+    display: flex;  
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    border: 2px solid black;
 
     &:hover {
         cursor: pointer;

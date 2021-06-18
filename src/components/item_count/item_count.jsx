@@ -13,6 +13,17 @@ class ItemCount extends Component {
         this.state = props
     }
 
+    itemSrcStyle = {
+        width: "75px",
+        height: "100%",
+        marginLeft: "0.5rem",
+    }
+
+    imgStyle = {
+        height: "100%",
+        width: "90px",
+        objectFit: "cover",
+    }
     render() {
 
         return (
@@ -20,16 +31,23 @@ class ItemCount extends Component {
             <div className="view">
 
                 <div className="item_column">
-                    <IconButton imgSrc={Plus} width={"25px"} height={"25px"} padding={"1rem"} type="normal" borderRadius={"0px"} isBorder={true} />
-                    <div className="text_vlaue">1</div>
-                    <IconButton imgSrc={Minus} width={"25px"} height={"25px"} padding={"1rem"} type="normal" borderRadius={"0px"} isBorder={true} />
+                    {
+                        <IconButton isMini={this.props.isMini} imgSrc={Plus} width={"25px"} height={"25px"} padding={"1rem"} type="normal" borderRadius={"0px"} isBorder={true} />
+                    }
+                    <div style={this.props.isMini ? {
+                        fontSize: "12px",
+                        fontWeight: "600"
+                    } : null} className="text_vlaue">1</div>
+                    {
+                        <IconButton isMini={this.props.isMini} imgSrc={Minus} width={"25px"} height={"25px"} padding={"1rem"} type="normal" borderRadius={"0px"} isBorder={true} />
+                    }
                 </div>
 
-                <div className="item_src">
-                    <img src={Logo} alt="" />
+                <div style={this.props.isMini ? this.itemSrcStyle : null} className="item_src">
+                    <img style={this.props.isMini ? this.imgStyle : null} src={Logo} alt="" />
                 </div>
 
-            </div>
+            </div >
 
         )
     }

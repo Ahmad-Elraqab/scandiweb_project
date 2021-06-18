@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-content: space-between;
+    align-items: center;
     color: black !important;
 }
 
@@ -16,7 +16,7 @@
 
 .item_src {
     height: 100%;
-    width: 150;
+    width: 150px;
     margin-left: 1rem;
 
     img {

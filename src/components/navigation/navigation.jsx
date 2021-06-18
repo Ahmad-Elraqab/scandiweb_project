@@ -29,8 +29,8 @@ class Navigation extends Component {
                 </div>
 
                 <ul className="navigation_options">
-                    <li><IconButton imgSrc={currencyIcon} width={"25px"} height={"25px"} type="dropdown" borderRadius={"60%"}/></li>
-                    <li><IconButton imgSrc={cartIcon} width={"25px"} height={"25px"} type="notifier" borderRadius={"60%"}/></li>
+                    <li><IconButton imgSrc={currencyIcon} width={"25px"} height={"25px"} type="dropdown" borderRadius={"60%"} /></li>
+                    <li><IconButton imgSrc={cartIcon} width={"25px"} height={"25px"} type="notifier" borderRadius={"60%"} /></li>
                 </ul>
 
             </div>

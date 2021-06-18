@@ -3,4 +3,15 @@
     width: 65%;
     background-color: white;
     margin: 0 auto;
+    position: relative;
+}
+
+.notification {
+    position: absolute;
+    left: -35%;
+    display: none;
+    width: 162%;
+    height: 100%;
+    top: 100px;
+    background-color: rgba(128, 128, 128, 0.377);
 }
