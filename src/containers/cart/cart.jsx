@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import Template from "../../components/template/template"
 import CartCard from "../../components/cart_card/cart_card"
 import "./cart.scss"
 
@@ -16,18 +15,15 @@ class Cart extends Component {
 
     render() {
         return (
-            <Template>
-                <div className="cart">
-                    <p className="innerText">CART</p>
+            <div className="cart">
+                <p className="innerText">CART</p>
 
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
-                </div>
-            </Template>
+                <CartCard />
+                <CartCard />
+                <CartCard />
+            </div>
         )
     }
-
 
 }
 

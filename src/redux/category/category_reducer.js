@@ -6,6 +6,9 @@ const initState = {
     loading: false,
     currentCategory: "",
     currentPage: 1,
+    categories: [
+
+    ],
     products: [
 
     ]
@@ -21,8 +24,10 @@ const categoryReducer = (state = initState, action) => {
             {
                 return {
                     ...state,
-                    loading: true,
-                    products: action.data
+                    loading: false,
+                    products: action.products,
+                    currentCategory: action.categories[0],
+                    categories: action.categories
                 }
             }
         case CategoryActionType.GET_NAV_CATEGORIES:

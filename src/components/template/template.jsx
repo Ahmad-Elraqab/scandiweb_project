@@ -1,22 +1,33 @@
 import React, { Component } from "react"
 import Navigation from "../navigation/navigation"
 import Notification from "../notification/notification"
+import { fetchProducts } from "../../redux/category/category_action"
+import { connect } from "react-redux";
 
 import "./template.scss"
 
 class Template extends Component {
 
-    constructor({ props }) {
+    constructor(props) {
         super(props)
-        this.state = props
+        this.state = {
+            categories: [],
+            currentCategory: []
+        }
     }
 
 
+    componentDidMount() {
+        this.props.fetchProducts()
+    }
+
     render() {
+        // const { categories, currentCategory } = this.props
         return (
             <div className="template">
+                {console.log(this.props.categories)}
                 <div>
-                    <Navigation />
+                    <Navigation categories={categories} currentCategory={currentCategory} />
                 </div>
 
 
@@ -30,4 +41,17 @@ class Template extends Component {
 
 }
 
-export default Template
+const mapStateToProps = ({ categoryReducer }) => ({
+    categories: categoryReducer.categories,
+    currentCategory: categoryReducer.currentCategory,
+
+});
+
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        fetchProducts: () => { dispatch(fetchProducts()) },
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Template)
+

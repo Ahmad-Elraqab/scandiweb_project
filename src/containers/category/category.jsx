@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import Template from "../../components/template/template"
 import CategoryCard from "../../components/category_card/category_card"
 import Pagination from "../../components/pagination/pagination"
 import "./category.scss"
@@ -15,19 +14,14 @@ class Category extends Component {
 
     componentDidMount() {
 
-        this.props.fetchProducts();
-
-        console.log(this.props.loading)
-        console.log(this.props.products)
 
     }
     render() {
         return (
-            <Template>
+            <div>
 
                 <div className="header">
 
-                    {console.log(this.props.products)}
                     <p className={"innerText"}>Category name</p>
 
                     <Pagination />
@@ -43,7 +37,7 @@ class Category extends Component {
 
                 </div>
 
-            </Template>
+            </div>
         );
     }
 }
@@ -56,7 +50,7 @@ const mapStateToProps = ({ categoryReducer }) => ({
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        fetchProducts: () => { dispatch(fetchProducts()) },
+        // fetchProducts: () => { dispatch(fetchProducts()) },
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Category)

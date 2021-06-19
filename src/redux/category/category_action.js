@@ -3,19 +3,11 @@ import { getData } from "../../graphQl/Category/category"
 import { GET_PORDUCTS } from "../../graphQl/Category/category_queries"
 import client from "../../graphQl/server"
 
-// export const validatingUserFailed = () => ({
-//     type: UserActionTypes.VALID_USER_FAILED
-// })
-// export const validatingUserSucess = (user) => ({
-
-//     type: UserActionTypes.VALID_USER_SUCESS,
-//     user
-// })
-
-export const loadPoducts = (data) => ({
+export const loadPoducts = (products, categories) => ({
 
     type: CategoryActionType.LOAD_PRODUCTS,
-    data: data
+    products,
+    categories,
 
 })
 
@@ -27,18 +19,28 @@ export const fetchProducts = () => {
                 query: GET_PORDUCTS
             }).then(result => {
 
-                console.log(result.data)
-
-                dispatch(loadPoducts(result.data))
+                dispatch(setCategoryAndProducts(result.data))
             })
     }
 }
 
-export const getCategories = () => ({
+export const setCategoryAndProducts = (data) => {
 
-    type: CategoryActionType.getCategories
+    return (dispatch) => {
+        var categories = []
+        var products = new Map();
 
-})
+        data.category.products.map((e) => {
+
+            products.has(e.category) ? products.get(e.category).push(e) : products.set(e.category, [e]) && categories.push(e.category)
+
+        })
+
+        dispatch(loadPoducts(products, categories))
+    }
+
+}
+
 export const getCategoryProducts = (value) => ({
 
     type: CategoryActionType.getCategoryProducts,
