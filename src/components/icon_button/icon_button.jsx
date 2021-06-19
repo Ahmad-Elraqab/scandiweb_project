@@ -39,12 +39,17 @@ class IconButton extends Component {
 
                 {this.props.type === "dropdown" ? <div className={"currency"} style={this.props.isMini ? this.parentMini : this.style} >
                     <img style={this.props.isMini ? this.childMiniStyle : null} src={this.props.imgSrc} alt="" /></div> : null}
+
                 {/* setCurrency add this class when the mini cart is opened */}
+
                 {this.props.type === "notifier" ? <div className="state" data-value={"2"} style={this.props.isMini ? this.parentMini : this.style}>
                     <img style={this.props.isMini ? this.childMiniStyle : null} className src={this.props.imgSrc} alt="" /></div> : null}
+
                 {/* setState add this class when the value of cart is 0 */}
+
                 {this.props.type === "normal" ? <div className="normal" style={this.props.isMini ? this.parentMini : this.style}>
                     <img style={this.props.isMini ? this.childMiniStyle : null} className src={this.props.imgSrc} alt="" /></div> : null}
+
 
                 {this.props.type === "text" ? <div className="text" style={this.props.isMini ? this.parentMini : this.style}><p>{this.props.title}</p> </div> : null}
 
