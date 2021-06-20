@@ -7,34 +7,22 @@ import cartIcon from "../../assets/icons/Vector.svg"
 
 class Navigation extends Component {
 
-    constructor({ props }) {
+    constructor(props) {
         super(props)
         this.state = {
-            categories: [],
-            currentCategory: [],
         }
-    }
-    componentDidMount() {
-
-        this.props.fetchPosts().then(response => {
-            this.setState({
-                categories: response.categories,
-                currentCategory: response.currentCategory,
-            });
-        });
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="navigation">
                 <ul className="navigation_list">
                     {
-                        this.state.categories.forEach(e => {
+                        this.props.categories.map(e => (
                             e === this.props.currentCategory ?
-                                <li className={"active"}>{e}</li> :
-                                <li>{e}</li>
-                        })
+                                (<li className="active">{e.toUpperCase()}</li>) :
+                                (<li onClick={() => this.props.onClick(e)}>{e.toUpperCase()}</li>)
+                        ))
                     }
 
                 </ul>

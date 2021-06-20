@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Navigation from "../navigation/navigation"
 import Notification from "../notification/notification"
 import { fetchProducts } from "../../redux/category/category_action"
+import { setRoute } from "../../redux/category/category_action"
 import { connect } from "react-redux";
 
 import "./template.scss"
@@ -11,23 +12,22 @@ class Template extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            categories: [],
-            currentCategory: []
         }
     }
 
-
     componentDidMount() {
-        this.props.fetchProducts()
+        const { fetchProducts } = this.props
+        fetchProducts()
     }
 
     render() {
-        // const { categories, currentCategory } = this.props
+        const { setRoute, categories, currentCategory } = this.props;
+
         return (
             <div className="template">
-                {console.log(this.props.categories)}
+
                 <div>
-                    <Navigation categories={categories} currentCategory={currentCategory} />
+                    <Navigation categories={categories} currentCategory={currentCategory} onClick={setRoute} />
                 </div>
 
 
@@ -50,7 +50,8 @@ const mapStateToProps = ({ categoryReducer }) => ({
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        fetchProducts: () => { dispatch(fetchProducts()) },
+        fetchProducts: () => dispatch(fetchProducts()),
+        setRoute: (value) => dispatch(setRoute(value)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Template)

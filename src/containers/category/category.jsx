@@ -2,27 +2,26 @@ import React, { Component } from "react"
 import CategoryCard from "../../components/category_card/category_card"
 import Pagination from "../../components/pagination/pagination"
 import "./category.scss"
-import { fetchProducts } from "../../redux/category/category_action"
+import { getProductDescription } from "../../redux/category/category_action"
 import { connect } from "react-redux";
 
 class Category extends Component {
 
     constructor(props) {
         super(props)
-        this.state = props
+        this.state = {
+
+        }
     }
 
-    componentDidMount() {
-
-
-    }
     render() {
+        const { currentCategory, products } = this.props
         return (
             <div>
 
                 <div className="header">
 
-                    <p className={"innerText"}>Category name</p>
+                    <p className={"innerText"}>{currentCategory.toUpperCase()}</p>
 
                     <Pagination />
 
@@ -30,10 +29,13 @@ class Category extends Component {
 
                 <div className="products_grid">
 
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
+                    {
+                        products.length !== 0 ? products.get(currentCategory).map((e) => (
+
+                            <CategoryCard data={e} />
+                        )) : <h1>No products are available</h1>
+                        // < CategoryCard />
+                    }
 
                 </div>
 
@@ -44,13 +46,14 @@ class Category extends Component {
 
 const mapStateToProps = ({ categoryReducer }) => ({
     loading: categoryReducer.loading,
+    currentCategory: categoryReducer.currentCategory,
     products: categoryReducer.products,
 });
 
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        // fetchProducts: () => { dispatch(fetchProducts()) },
+        getProductDescription: () => { dispatch(getProductDescription()) },
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Category)

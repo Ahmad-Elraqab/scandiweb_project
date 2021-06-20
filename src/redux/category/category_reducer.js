@@ -30,6 +30,22 @@ const categoryReducer = (state = initState, action) => {
                     categories: action.categories
                 }
             }
+        case CategoryActionType.SET_ROUTE:
+            {
+                return {
+
+                    ...state,
+                    currentCategory: action.route
+                }
+            }
+        case CategoryActionType.GET_PRIDUCT_LIST:
+            {
+                return {
+
+                    ...state,
+                    currentCategory: action.route
+                }
+            }
         case CategoryActionType.GET_NAV_CATEGORIES:
             {
 

@@ -11,6 +11,19 @@ export const loadPoducts = (products, categories) => ({
 
 })
 
+export const setRoute = (route) => ({
+
+    type: CategoryActionType.SET_ROUTE,
+    route,
+
+})
+
+export const getProductDescription = () => ({
+
+    type: CategoryActionType.GET_PRIDUCT_LIST,
+
+})
+
 export const fetchProducts = () => {
 
     return (dispatch) => {
