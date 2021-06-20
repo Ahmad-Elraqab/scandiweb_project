@@ -15,7 +15,6 @@ class CategoryCard extends Component {
 
     render() {
         const { data } = this.props
-        console.log(data)
         return (
             <div className="product">
                 <div className={"img_div " + (data.inStock == true ? "" : "outStock")} data-out-stock="OUT OF STOCK" >

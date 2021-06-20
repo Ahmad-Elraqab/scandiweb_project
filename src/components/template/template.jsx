@@ -14,14 +14,14 @@ class Template extends Component {
         this.state = {
         }
     }
-
     componentDidMount() {
         const { fetchProducts } = this.props
         fetchProducts()
     }
 
     render() {
-        const { setRoute, categories, currentCategory } = this.props;
+        const { setRoute, categories, currentCategory, isCartOpen } = this.props;
+
 
         return (
             <div className="template">
@@ -30,9 +30,9 @@ class Template extends Component {
                     <Navigation categories={categories} currentCategory={currentCategory} onClick={setRoute} />
                 </div>
 
-
                 {this.props.children}
-                <div className="notification">
+
+                <div style={{ display: isCartOpen ? "block" : "none" }} className="notification">
                     <Notification />
                 </div>
             </div>
@@ -41,9 +41,10 @@ class Template extends Component {
 
 }
 
-const mapStateToProps = ({ categoryReducer }) => ({
+const mapStateToProps = ({ categoryReducer, navigationReducer }) => ({
     categories: categoryReducer.categories,
     currentCategory: categoryReducer.currentCategory,
+    isCartOpen: navigationReducer.isCartOpen,
 
 });
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import CartCard from "../cart_card/cart_card"
 import IconButton from "../../components/icon_button/icon_button"
+import { connect } from "react-redux";
 
 import "./notification.scss"
 
@@ -11,9 +12,11 @@ class Notification extends Component {
         this.state = props
     }
     render() {
+        const { isCartOpen } = this.props
+
         return (
 
-            <div style={{ textAlign: "start" }} className="notification-body">
+            <div style={{ display: isCartOpen ? "block" : "none" }} className="notification-body">
 
                 <p><b>My Bag</b>, 2 items</p>
                 <br />
@@ -42,4 +45,19 @@ class Notification extends Component {
     }
 }
 
-export default Notification
+
+const mapStateToProps = ({ navigationReducer }) => ({
+    isCartOpen: navigationReducer.isCartOpen,
+    isCurrencyOpen: navigationReducer.isCurrencyOpen,
+
+});
+
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Notification)
+

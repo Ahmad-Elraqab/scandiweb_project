@@ -34,8 +34,10 @@ class IconButton extends Component {
     }
 
     render() {
+        const { onclick } = this.props
+
         return (
-            <div className="parent" onclick={() => this.props.onclick()}>
+            <div className="parent" onClick={() => onclick()}>
 
                 {this.props.type === "dropdown" ? <div className={"currency"} style={this.props.isMini ? this.parentMini : this.style} >
                     <img style={this.props.isMini ? this.childMiniStyle : null} src={this.props.imgSrc} alt="" /></div> : null}
