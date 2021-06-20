@@ -1,5 +1,4 @@
 import CategoryActionType from "./category_action_type"
-import { getData } from "../../graphQl/Category/category"
 import { GET_PORDUCTS } from "../../graphQl/Category/category_queries"
 import client from "../../graphQl/server"
 
@@ -15,6 +14,13 @@ export const setRoute = (route) => ({
 
     type: CategoryActionType.SET_ROUTE,
     route,
+
+})
+
+export const setNextRoute = (value) => ({
+
+    type: CategoryActionType.SELECTED_PRODUCT,
+    value,
 
 })
 
@@ -53,10 +59,3 @@ export const setCategoryAndProducts = (data) => {
     }
 
 }
-
-export const getCategoryProducts = (value) => ({
-
-    type: CategoryActionType.getCategoryProducts,
-    data: value
-
-})

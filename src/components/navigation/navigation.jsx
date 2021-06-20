@@ -7,6 +7,7 @@ import cartIcon from "../../assets/icons/Vector.svg"
 import { connect } from "react-redux";
 import { toggleCart } from "../../redux/navigation/navigation_action"
 import { toggleCurrency } from "../../redux/navigation/navigation_action"
+import { Link } from "react-router-dom";
 
 class Navigation extends Component {
 
@@ -20,13 +21,16 @@ class Navigation extends Component {
         const { toggleCart, toggleCurrency } = this.props
         return (
             <div className="navigation">
-            
+
                 <ul className="navigation_list">
+
                     {
                         this.props.categories.map(e => (
                             e === this.props.currentCategory ?
-                                (<li className="active">{e.toUpperCase()}</li>) :
-                                (<li onClick={() => this.props.onClick(e)}>{e.toUpperCase()}</li>)
+                                (<Link to="/" style={{ textDecoration: "none" }}>
+                                    <li className="active">{e.toUpperCase()}</li></Link>
+                                ) :
+                                (<Link to="/" style={{ textDecoration: "none" }}><li onClick={() => this.props.onClick(e)}>{e.toUpperCase()}</li></Link>)
                         ))
                     }
 
@@ -41,7 +45,7 @@ class Navigation extends Component {
                     <li><IconButton imgSrc={cartIcon} width={"25px"} height={"25px"} type="notifier" borderRadius={"60%"} onclick={toggleCart} /></li>
                 </ul>
 
-            </div>
+            </div >
         )
     }
 }

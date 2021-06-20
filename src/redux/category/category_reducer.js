@@ -6,6 +6,7 @@ const initState = {
     loading: false,
     currentCategory: "",
     currentPage: 1,
+    selectedProduct: "",
     categories: [
 
     ],
@@ -17,7 +18,6 @@ const initState = {
 const categoryReducer = (state = initState, action) => {
 
     switch (action.type) {
-
 
         // fetching
         case CategoryActionType.LOAD_PRODUCTS:
@@ -46,22 +46,12 @@ const categoryReducer = (state = initState, action) => {
                     currentCategory: action.route
                 }
             }
-        case CategoryActionType.GET_NAV_CATEGORIES:
+        case CategoryActionType.SELECTED_PRODUCT:
             {
-
                 return {
 
                     ...state,
-                    loading: true
-                }
-            }
-        case CategoryActionType.GET_PRODUCTS_BY_CATEGORY:
-            {
-
-                return {
-
-                    ...state,
-                    loading: true
+                    selectedProduct: state.products.get(state.currentCategory).filter(e => e.name === action.value)[0]
                 }
             }
 

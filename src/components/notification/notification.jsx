@@ -11,8 +11,10 @@ class Notification extends Component {
         super(props)
         this.state = props
     }
+    notificationStyle = new Map()
     render() {
         const { isCartOpen } = this.props
+
 
         return (
 
