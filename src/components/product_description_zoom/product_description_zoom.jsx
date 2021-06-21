@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import "./product_description_zoom.scss"
-import Item from "../../assets/icons/item.svg"
 
 class ProductDescriptionZoom extends Component {
 
@@ -21,13 +20,16 @@ class ProductDescriptionZoom extends Component {
 
         return (
             < div className={"product_view"} >
-                <ul>
-                    {
-                        data ? data.gallery.map(e =>
-                            data.gallery.indexOf(e) !== this.state.currentIndex ? <li onClick={() => this.setIndex(data, e)}> <img src={e} alt="" /></li> : null
-                        ) : <h5>Loading data</h5>
-                    }
-                </ul>
+                {data ? data.gallery.length > 2
+                    ? <ul>
+                        {
+                            data ? data.gallery.map(e =>
+                                data.gallery.indexOf(e) !== this.state.currentIndex ? <li onClick={() => this.setIndex(data, e)}> <img src={e} alt="" /></li> : null
+                            ) : <h5>Loading data</h5>
+                        }
+                    </ul>
+                    : null : null
+                }
                 <div className="img_view">
                     <img src={data ? data.gallery[this.state.currentIndex] : null} alt="" />
                 </div>

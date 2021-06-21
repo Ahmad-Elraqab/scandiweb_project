@@ -5,7 +5,6 @@ import ProductDescription from "../src/containers/product_description/product_de
 import Cart from "../src/containers/cart/cart"
 import Template from "./components/template/template"
 
-
 function App() {
   return (
 

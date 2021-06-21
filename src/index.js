@@ -8,12 +8,17 @@ import store from "./redux/store"
 import { BrowserRouter } from "react-router-dom";
 import client from "./graphQl/server"
 import { ApolloProvider } from '@apollo/client';
+import { PersistGate } from 'redux-persist/integration/react'
+import persistor from './redux/persists'
+
 
 ReactDOM.render(
   <BrowserRouter >
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </ Provider>
     </ApolloProvider>
   </BrowserRouter >,

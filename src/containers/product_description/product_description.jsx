@@ -21,7 +21,6 @@ class ProductDescription extends Component {
 
         return (
             < div className="product_description" >
-                {/* {console.log(selectedProduct)} */}
                 <ProductDescriptionZoom data={selectedProduct} />
                 <AddToCart data={selectedProduct} />
             </div >
