@@ -23,7 +23,6 @@ class Cart extends Component {
 
         return (
             <div className="cart">
-                {console.log(products)}
                 <p className="innerText">CART</p>
                 {
                     products ? products.map((e) =>

@@ -44,7 +44,7 @@ class ProductSize extends Component {
                                 data ? data.items.map((g) => (
                                     <div style={this.props.isMini ? this.sizeMini : null}
                                         className={state.activeAttributes.get(data.name) === g.value ? "size selected" : 'size'}
-                                        onClick={() => onClick(data.name, g.value, state.name)}>{data.name === "Color" ? ntc.name(g.value)[1] : g.value}</div>
+                                        onClick={() => onClick(data.name, g.value, state)}>{data.name === "Color" ? ntc.name(g.value)[1] : g.value}</div>
                                 )) : null
                             }
                         </div >

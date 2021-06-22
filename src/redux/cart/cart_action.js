@@ -12,11 +12,11 @@ export const deleteFromCart = (products) => ({
     products,
 
 })
-export const updateCart = (attribute, value, name) => ({
+export const updateCart = (attribute, value, products) => ({
 
     type: CartActionType.UPDATE_CART,
     attribute,
     value,
-    name
+    products
 
 })
