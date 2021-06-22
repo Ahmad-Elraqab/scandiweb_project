@@ -69,6 +69,10 @@
 }
 .normal {
     transition: all ease-in-out 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     &:hover {
         animation: animate 1s infinite;
     }

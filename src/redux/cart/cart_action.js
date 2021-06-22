@@ -20,3 +20,10 @@ export const updateCart = (attribute, value, products) => ({
     products
 
 })
+export const updateCartItem = (id, oper) => ({
+
+    type: CartActionType.UPDATE_CART_COUNT,
+    id,
+    oper
+
+})

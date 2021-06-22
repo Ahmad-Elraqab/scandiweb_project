@@ -5,7 +5,8 @@ import "./product_description.scss"
 import { setNextRoute } from "../../redux/category/category_action"
 import { connect } from "react-redux";
 import { addToCart } from "../../redux/cart/cart_action"
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
+import shorid from "shortid"
 
 class ProductDescription extends Component {
 
@@ -32,9 +33,8 @@ class ProductDescription extends Component {
 
         const activeAttributes = new Map([...this.state.activeAttributes])
 
-        console.log(activeAttributes)
 
-        const data = { ...product, activeAttributes, "count": 1 }
+        const data = { ...product, activeAttributes, "count": 1, "id": shorid.generate() }
 
 
         this.props.addToCart(data)

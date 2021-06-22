@@ -33,28 +33,26 @@ class CartCard extends Component {
 
     render() {
 
-        const { data, updateData } = this.props
+        const { data, updateData, updateItem } = this.props
 
         return (
             <div className="card_layout" style={this.props.isMini ? this.cardLayoutMini : null}>
-                {console.log}
-                <div style={{ textAlign: "start", height: "100%" }}>
+                <div className={"items"} style={{ width: "80%", display: "flex", justifyItems: "space-between", flexWrap: "wrap" }}>
                     <div className="cart_card_header">
                         <p style={this.props.isMini ? this.miniStyle : { fontWeight: 600, fontSize: 30, margin: 0 }}>{data ? data.name : null}</p>
-                        <p style={this.props.isMini ? this.miniStyle : { fontWeight: 400, fontSize: 30, margin: 0 }}>There there</p>
                     </div>
                     <br />
-                    <div style={this.props.isMini ? { width: "100%" } : { width: "500px" }}>
+                    <div style={this.props.isMini ? { width: "100%" } : { display: "flex", justifyItems: "space-between", width: "100%" }}>
                         {data ? data.attributes.map((e) =>
-                            [data.activeAttributes.has(e.name) ? <h1></h1> : updateData(e.name, ''),
-                            <ProductSize data={e} onClick={updateData} state={data} />]
+                            [<ProductSize data={e} onClick={updateData} state={data} />,
+                            data.activeAttributes.has(e.name) ? <h1></h1> : updateData(e.name, '')]
                         ) : null}
                     </div>
                 </div>
 
 
-                <div className="items" style={this.props.isMini ? { width: "43%" } : null}>
-                    <ItemCard isMini={this.props.isMini} />
+                <div className="items" style={{ height: "200px" }}>
+                    <ItemCard isMini={this.props.isMini} data={data} updateItem={updateItem} />
                 </div>
 
 

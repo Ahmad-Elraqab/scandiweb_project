@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import IconButton from "../../components/icon_button/icon_button"
-import Logo from "../../assets/icons/Image1.svg"
 import Plus from "../../assets/icons/plus.svg"
 import Minus from "../../assets/icons/minus.svg"
 import "./item_count.scss"
@@ -26,25 +25,32 @@ class ItemCount extends Component {
     }
     render() {
 
+        const { data, updateItem } = this.props
+
         return (
 
             <div className="view">
-
                 <div className="item_column">
                     {
-                        <IconButton isMini={this.props.isMini} imgSrc={Plus} width={"25px"} height={"25px"} padding={"1rem"} type="normal" borderRadius={"0px"} isBorder={true} />
+                        <div onClick={() => updateItem(data.id ? data.id : null, "+")}>
+                            <IconButton onclick={() => null} isMini={this.props.isMini} imgSrc={Plus} width={"20px"} height={"20px"}
+                                padding={"0.7rem"} type="normal" borderRadius={"0px"} isBorder={true} />
+                        </div>
                     }
                     <div style={this.props.isMini ? {
                         fontSize: "12px",
                         fontWeight: "600"
-                    } : null} className="text_vlaue">1</div>
+                    } : null} className="text_vlaue">{data ? data.count : null}</div>
                     {
-                        <IconButton isMini={this.props.isMini} imgSrc={Minus} width={"25px"} height={"25px"} padding={"1rem"} type="normal" borderRadius={"0px"} isBorder={true} />
+                        <div onClick={() => updateItem(data.id ? data.id : null, "-")}>
+                            <IconButton onclick={() => null} isMini={this.props.isMini} imgSrc={Minus} width={"20px"} height={"20px"}
+                                padding={"0.7rem"} type="normal" borderRadius={"0px"} isBorder={true} />
+                        </div>
                     }
                 </div>
 
                 <div style={this.props.isMini ? this.itemSrcStyle : null} className="item_src">
-                    <img style={this.props.isMini ? this.imgStyle : null} src={Logo} alt="" />
+                    <img style={this.props.isMini ? this.imgStyle : null} src={data ? data.gallery[0] : null} alt="" />
                 </div>
 
             </div >

@@ -6,7 +6,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    max-height: 200px;
 }
 
 .items {
+    text-align: start;
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+    justify-content: space-between;
 }

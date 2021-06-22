@@ -1,5 +1,5 @@
 import CartActionType from "./cart_action_type";
-import { addToCartUtil, updateCartUtil } from "./cart_reducer_util";
+import { addToCartUtil, updateCartUtil, updateCartItemUtil } from "./cart_reducer_util";
 
 const initState = {
 
@@ -26,6 +26,10 @@ const cartReducer = (state = initState, action) => {
         case CartActionType.UPDATE_CART:
             {
                 return updateCartUtil(state, action)
+            }
+        case CartActionType.UPDATE_CART_COUNT:
+            {
+                return updateCartItemUtil(state, action)
             }
 
 

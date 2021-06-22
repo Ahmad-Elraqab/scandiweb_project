@@ -32,7 +32,7 @@ class ProductSize extends Component {
         const { data, onClick, state } = this.props
 
         return (
-            <div>
+            <div style={{ marginRight: "4rem" }}>
                 {
 
                     data ? [
@@ -42,7 +42,7 @@ class ProductSize extends Component {
                         <div className="size_list" style={this.props.isMini ? { width: "150%", justifyContent: "start" } : null}>
                             {
                                 data ? data.items.map((g) => (
-                                    <div style={this.props.isMini ? this.sizeMini : null}
+                                    <div className={"item_con"} style={this.props.isMini ? this.sizeMini : null}
                                         className={state.activeAttributes.get(data.name) === g.value ? "size selected" : 'size'}
                                         onClick={() => onClick(data.name, g.value, state)}>{data.name === "Color" ? ntc.name(g.value)[1] : g.value}</div>
                                 )) : null
