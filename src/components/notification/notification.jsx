@@ -2,7 +2,8 @@ import React, { Component } from "react"
 import CartCard from "../cart_card/cart_card"
 import IconButton from "../../components/icon_button/icon_button"
 import { connect } from "react-redux";
-
+import { Link } from "react-router-dom";
+import { toggleCart } from "../../redux/navigation/navigation_action";
 import "./notification.scss"
 
 class Notification extends Component {
@@ -36,7 +37,9 @@ class Notification extends Component {
                 </div>
                 <br />
                 <div className="checkout_btn">
-                    <IconButton title={"VIEW BAG"} width={"75%"} padding={".9rem"} type="text" borderRadius={"0px"} isBorder={true} />
+                    <Link to="/cart" style={{ textDecoration: "none" }} onClick={this.props.toggleCart}>
+                        <IconButton title={"VIEW BAG"} width={"75%"} padding={".9rem"} type="text" borderRadius={"0px"} isBorder={true} onclick={() => null} />
+                    </Link>
                     <div style={{ width: "10px" }}></div>
                     <IconButton title={"CHECKOUT"} width={"75%"} padding={"1rem"} color={"white"} backgroundColor={"#5ECE7B"} type="text" borderRadius={"0px"} />
 
@@ -51,14 +54,12 @@ class Notification extends Component {
 const mapStateToProps = ({ navigationReducer }) => ({
     isCartOpen: navigationReducer.isCartOpen,
     isCurrencyOpen: navigationReducer.isCurrencyOpen,
-
 });
 
 const mapDispatchToProps = (dispatch) => {
 
     return {
-
-
+        toggleCart: () => { dispatch(toggleCart()) }
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Notification)

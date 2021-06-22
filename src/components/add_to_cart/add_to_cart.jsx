@@ -6,13 +6,13 @@ import parse from 'html-react-parser';
 
 class AddToCart extends Component {
 
-    constructor({ props }) {
+    constructor(props) {
         super(props)
-        this.state = props
+        this.state = this.props.state
     }
 
     render() {
-        const { data } = this.props
+        const { data, onClick, addToCart, state } = this.props
 
         return (
             <div className="panel">
@@ -21,12 +21,18 @@ class AddToCart extends Component {
                     <p style={{ fontWeight: 600, fontSize: 30, margin: 0 }}>{data.name}</p>
                     <p style={{ fontWeight: 400, fontSize: 30, marginTop: 0 }}>{"There there"}</p>
                 </div>
-                <ProductSize data={data.attributes} />
+
+                {data ? data.attributes.map((e) =>
+                    [state.activeAttributes.has(e.name) ? <h1></h1> : onClick(e.name, ''),
+                    <ProductSize data={e} onClick={onClick} state={state} />]
+                ) : null}
+
                 <div style={{ textAlign: "start", marginBottom: "2rem" }}>
                     <p style={{ fontWeight: 700, fontSize: 18 }}>PRICE:</p>
                     <p style={{ fontWeight: 700, fontSize: 24 }}>{data ? "$" + data.prices[0]['amount'] : null}</p>
                 </div>
-                <IconButton color={"white"} title={"ADD TO CART"} height={"25px"} type="text" borderRadius={"0px"} backgroundColor={"#5ECE7B"} padding={"1rem"} />
+
+                <IconButton onclick={() => addToCart(data)} color={"white"} title={"ADD TO CART"} height={"25px"} type="text" borderRadius={"0px"} backgroundColor={"#5ECE7B"} padding={"1rem"} />
 
                 <br />
                 <p style={{ textAlign: "start" }}>{parse("" + data.description)}</p>

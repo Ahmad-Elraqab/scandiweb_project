@@ -6,9 +6,11 @@ import "./cart_card.scss"
 
 class CartCard extends Component {
 
-    constructor({ props }) {
+    constructor(props) {
         super(props)
-        this.state = props
+        this.state = {
+
+        }
     }
 
     miniStyle = {
@@ -22,7 +24,6 @@ class CartCard extends Component {
         borderBottom: "1px solid white",
         padding: "0rem",
         marginBottom: "2rem",
-        height: " 130px",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
@@ -31,17 +32,23 @@ class CartCard extends Component {
     }
 
     render() {
+
+        const { data, updateData } = this.props
+
         return (
             <div className="card_layout" style={this.props.isMini ? this.cardLayoutMini : null}>
+                {console.log}
                 <div style={{ textAlign: "start", height: "100%" }}>
                     <div className="cart_card_header">
-                        <p style={this.props.isMini ? this.miniStyle : { fontWeight: 600, fontSize: 30, margin: 0 }}>Apollo</p>
-                        <p style={this.props.isMini ? this.miniStyle : { fontWeight: 400, fontSize: 30, margin: 0 }}>Running Short</p>
-                        <p style={this.props.isMini ? { fontWeight: 600, fontSize: 14, marginTop: "0.7rem" } : { fontWeight: 600, fontSize: 24, margin: 0 }}>$50.00</p>
+                        <p style={this.props.isMini ? this.miniStyle : { fontWeight: 600, fontSize: 30, margin: 0 }}>{data ? data.name : null}</p>
+                        <p style={this.props.isMini ? this.miniStyle : { fontWeight: 400, fontSize: 30, margin: 0 }}>There there</p>
                     </div>
                     <br />
                     <div style={this.props.isMini ? { width: "100%" } : { width: "500px" }}>
-                        <ProductSize isMini={this.props.isMini} />
+                        {data ? data.attributes.map((e) =>
+                            [data.activeAttributes.has(e.name) ? <h1></h1> : updateData(e.name, ''),
+                            <ProductSize data={e} onClick={updateData} state={data} />]
+                        ) : null}
                     </div>
                 </div>
 

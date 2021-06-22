@@ -1,5 +1,4 @@
 import CategoryActionType from "./category_action_type";
-import { loadPoductsUtil } from "./category_util";
 
 const initState = {
 
