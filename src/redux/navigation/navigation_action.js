@@ -1,17 +1,4 @@
 import NavigationActionType from "./navigation_action_type"
-import client from "../../graphQl/server"
-
-export const loadCurrency = () => ({
-
-    type: NavigationActionType.GET_CURRENCY,
-
-})
-
-export const ChangeCurrency = (value) => ({
-
-    type: NavigationActionType.GET_CURRENCY,
-
-})
 
 export const toggleCurrency = () => ({
 

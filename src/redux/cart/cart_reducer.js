@@ -1,9 +1,12 @@
 import CartActionType from "./cart_action_type";
 import { addToCartUtil, updateCartUtil, updateCartItemUtil, updateTotal } from "./cart_reducer_util";
+import getSymbolFromCurrency from 'currency-symbol-map'
 
 const initState = {
 
     total: 0,
+    currentCurrencyIndex: { name: "USD", symbol: "$" },
+    currencies: [],
     cartItemCount: 0,
     products: [
 
@@ -34,6 +37,22 @@ const cartReducer = (state = initState, action) => {
             {
                 const newState = updateCartItemUtil(state, action)
                 return updateTotal(newState)
+            }
+        case CartActionType.LOAD_CURRENCIES:
+            {
+                const data = []
+                action.data.currencies.forEach(e => {
+                    data.push({ name: e, symbol: getSymbolFromCurrency(e) })
+                });
+                return {
+                    ...state,
+                    currencies: data
+                }
+            }
+        case CartActionType.CHANGE_CURRENCY:
+            {
+                state.currentCurrencyIndex = action.data
+                return updateTotal(state)
             }
 
 

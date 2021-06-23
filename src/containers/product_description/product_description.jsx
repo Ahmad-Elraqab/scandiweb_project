@@ -51,21 +51,22 @@ class ProductDescription extends Component {
 
     render() {
 
-        const { selectedProduct, setNextRoute } = this.props
+        const { selectedProduct, setNextRoute, currentCurrencyIndex } = this.props
 
         setNextRoute(this.props.match.params.name)
 
         return (
             < div className="product_description" >
                 <ProductDescriptionZoom data={selectedProduct} />
-                <AddToCart data={selectedProduct} addToCart={this.addToCart} onClick={this.onClick} state={this.state} />
+                <AddToCart data={selectedProduct} addToCart={this.addToCart} onClick={this.onClick} state={this.state} currentCurrencyIndex={currentCurrencyIndex} />
             </div >
         )
     }
 }
 
-const mapStateToProps = ({ categoryReducer }) => ({
+const mapStateToProps = ({ categoryReducer, cartReducer }) => ({
     selectedProduct: categoryReducer.selectedProduct,
+    currentCurrencyIndex: cartReducer.currentCurrencyIndex
 });
 
 const mapDispatchToProps = (dispatch) => {

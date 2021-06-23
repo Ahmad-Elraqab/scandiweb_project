@@ -15,7 +15,7 @@ class Category extends Component {
     }
 
     render() {
-        const { currentCategory, products, addToCart } = this.props
+        const { currentCategory, products, addToCart, currentCurrencyIndex } = this.props
         return (
             <div>
 
@@ -32,7 +32,7 @@ class Category extends Component {
                     {
                         products.length !== 0 ? products.get(currentCategory).map((e) => (
 
-                            <CategoryCard data={e} addToCart={addToCart} />
+                            <CategoryCard data={e} addToCart={addToCart} currentCurrencyIndex={currentCurrencyIndex} />
                         )) : <h1>No products are available</h1>
                         // < CategoryCard />
                     }
@@ -48,6 +48,7 @@ const mapStateToProps = ({ categoryReducer, cartReducer }) => ({
     loading: categoryReducer.loading,
     currentCategory: categoryReducer.currentCategory,
     products: categoryReducer.products,
+    currentCurrencyIndex: cartReducer.currentCurrencyIndex
 });
 
 const mapDispatchToProps = (dispatch) => {

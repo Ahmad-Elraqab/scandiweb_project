@@ -26,7 +26,9 @@ class CategoryCard extends Component {
     }
 
     render() {
-        const { data, addToCart } = this.props
+        const { data, addToCart, currentCurrencyIndex } = this.props
+        const currency = data.prices.find((e) => e.currency === currentCurrencyIndex.name)
+
         return (
             <div className="product">
                 <div className={"img_div " + (data.inStock == true ? "" : "outStock")} data-out-stock="OUT OF STOCK" >
@@ -43,7 +45,7 @@ class CategoryCard extends Component {
                 </div>
                 <div className={"description"}>
                     <p className='p'>{data.name}</p>
-                    <p><b>{"$" + data.prices[0].amount}</b></p>
+                    <p><b>{currentCurrencyIndex.symbol + currency.amount}</b></p>
                     {/* later display by current currency */}
                 </div>
             </div >

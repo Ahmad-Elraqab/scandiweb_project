@@ -1,4 +1,6 @@
 import CartActionType from "./cart_action_type"
+import { GET_CURRENCIES } from "../../graphQl/currency/query"
+import client from "../../graphQl/server"
 
 export const addToCart = (products) => ({
 
@@ -27,3 +29,28 @@ export const updateCartItem = (id, oper) => ({
     oper
 
 })
+export const loadCurrency = (data) => ({
+
+    type: CartActionType.LOAD_CURRENCIES,
+    data
+
+})
+
+export const changeCurrency = (data) => ({
+
+    type: CartActionType.CHANGE_CURRENCY,
+    data
+
+})
+export const fetchCurrencies = () => {
+
+    return (dispatch) => {
+        client
+            .query({
+                query: GET_CURRENCIES
+            }).then(result => {
+
+                dispatch(loadCurrency(result.data))
+            })
+    }
+}

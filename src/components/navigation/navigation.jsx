@@ -21,7 +21,6 @@ class Navigation extends Component {
         const { toggleCart, toggleCurrency, cartItemCount } = this.props
         return (
             <div className="navigation">
-
                 <ul className="navigation_list">
 
                     {
@@ -60,7 +59,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
 
         toggleCurrency: () => dispatch(toggleCurrency()),
-        toggleCart: () => dispatch(toggleCart())
+        toggleCart: () => dispatch(toggleCart()),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation)

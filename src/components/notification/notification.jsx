@@ -15,7 +15,7 @@ class Notification extends Component {
     }
     notificationStyle = new Map()
     render() {
-        const { isCartOpen, products, updateCartItem, updateCart, cartItemCount, total } = this.props
+        const { isCartOpen, products, updateCartItem, updateCart, cartItemCount, total, currentCurrencyIndex } = this.props
 
 
         return (
@@ -28,7 +28,7 @@ class Notification extends Component {
                     <div className="pos">
                         {
                             products ? products.map((e) => (
-                                <CartCard isMini={true} data={e} updateData={updateCart} updateItem={updateCartItem} />
+                                <CartCard isMini={true} data={e} updateData={updateCart} updateItem={updateCartItem} currentCurrencyIndex={currentCurrencyIndex} />
                             )) : null
                         }
                     </div>
@@ -36,7 +36,7 @@ class Notification extends Component {
                 <br />
                 {cartItemCount === 0 ? null : <div className="total">
                     <p>Total</p>
-                    <p>{"$" + total}</p>
+                    <p>{currentCurrencyIndex.symbol + Math.round(total)}</p>
                 </div>}
                 <br />
                 {cartItemCount === 0 ? null : <div className="checkout_btn">
@@ -59,7 +59,8 @@ const mapStateToProps = ({ navigationReducer, cartReducer }) => ({
     isCurrencyOpen: navigationReducer.isCurrencyOpen,
     products: cartReducer.products,
     cartItemCount: cartReducer.cartItemCount,
-    total: cartReducer.total
+    total: cartReducer.total,
+    currentCurrencyIndex: cartReducer.currentCurrencyIndex
 });
 
 const mapDispatchToProps = (dispatch) => {

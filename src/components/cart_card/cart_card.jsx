@@ -34,7 +34,8 @@ class CartCard extends Component {
 
     render() {
 
-        const { data, updateData, updateItem } = this.props
+        const { data, updateData, updateItem, currentCurrencyIndex } = this.props
+        const currency = data.prices.find((e) => e.currency === currentCurrencyIndex.name)
 
         return (
             <div className="card_layout" style={this.props.isMini ? this.cardLayoutMini : null}>
@@ -43,7 +44,7 @@ class CartCard extends Component {
 
                     <p style={this.props.isMini ? this.miniStyle : { fontWeight: 600, fontSize: 30, margin: 0 }}>{data ? data.name : null}</p>
                     <br />
-                    <p style={this.props.isMini ? this.miniStyle : { fontWeight: 700, fontSize: 25, margin: 0 }}>{data ? "$" + data.prices[0].amount * data.count : null}</p>
+                    <p style={this.props.isMini ? this.miniStyle : { fontWeight: 700, fontSize: 25, margin: 0 }}>{data ? currentCurrencyIndex.symbol + Math.round(currency.amount * data.count) : null}</p>
                     <br />
 
                     {data ? data.attributes.map((e) =>

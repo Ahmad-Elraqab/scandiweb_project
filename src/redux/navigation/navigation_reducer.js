@@ -11,15 +11,6 @@ const navigationReducer = (state = initState, action) => {
 
     switch (action.type) {
 
-
-        // fetching
-        case NavigationActionType.GET_CURRENCY:
-            {
-                return {
-                    ...state,
-                    currenciesList: action.data
-                }
-            }
         case NavigationActionType.TOGGLE_CURRENCY:
             {
                 return {

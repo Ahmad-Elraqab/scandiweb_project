@@ -1,0 +1,20 @@
+.currency-body {
+    position: absolute;
+    background-color: white;
+    color: #000;
+    padding: 2rem;
+    display: flex;
+    width: 50px;
+    right: 7%;
+    top: 105px;
+    z-index: 5;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    text-align: "start";
+    box-shadow: 0px 4px 12px 10px rgba(168, 172, 176, 19%);
+
+    p {
+        text-align: start;
+    }
+}

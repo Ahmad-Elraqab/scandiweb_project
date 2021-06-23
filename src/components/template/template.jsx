@@ -1,9 +1,12 @@
 import React, { Component } from "react"
 import Navigation from "../navigation/navigation"
+import Currency from "../currency/currency"
 import Notification from "../notification/notification"
 import { fetchProducts } from "../../redux/category/category_action"
 import { setRoute } from "../../redux/category/category_action"
 import { connect } from "react-redux";
+import { fetchCurrencies } from "../../redux/cart/cart_action"
+import { changeCurrency } from "../../redux/cart/cart_action"
 
 import "./template.scss"
 
@@ -15,12 +18,13 @@ class Template extends Component {
         }
     }
     componentDidMount() {
-        const { fetchProducts } = this.props
+        const { fetchProducts, fetchCurrencies } = this.props
         fetchProducts()
+        fetchCurrencies()
     }
 
     render() {
-        const { setRoute, categories, currentCategory, isCartOpen } = this.props;
+        const { setRoute, categories, currentCategory, isCartOpen, currencies, isCurrencyOpen, changeCurrency } = this.props;
 
 
         return (
@@ -35,17 +39,20 @@ class Template extends Component {
                 <div style={{ display: isCartOpen ? "block" : "none" }} className="notification">
                     <Notification />
                 </div>
+
+                <Currency currencies={currencies} isCurrencyOpen={isCurrencyOpen} changeCurrency={changeCurrency} />
             </div>
         )
     }
 
 }
 
-const mapStateToProps = ({ categoryReducer, navigationReducer }) => ({
+const mapStateToProps = ({ categoryReducer, navigationReducer, cartReducer }) => ({
     categories: categoryReducer.categories,
     currentCategory: categoryReducer.currentCategory,
     isCartOpen: navigationReducer.isCartOpen,
-
+    isCurrencyOpen: navigationReducer.isCurrencyOpen,
+    currencies: cartReducer.currencies
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -53,6 +60,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchProducts: () => dispatch(fetchProducts()),
         setRoute: (value) => dispatch(setRoute(value)),
+        fetchCurrencies: () => dispatch(fetchCurrencies()),
+        changeCurrency: (value) => dispatch(changeCurrency(value))
+
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Template)

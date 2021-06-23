@@ -53,10 +53,12 @@ export const updateTotal = (state) => {
 
     var total = 0.0
     state.products.forEach(e => {
-        total += e.prices[0].amount * e.count
+        const currency = e.prices.find((e) => e.currency === state.currentCurrencyIndex.name)
+        console.log(currency)
+
+        total += currency.amount * e.count
     });
     state.total = total
 
-    console.log(total)
     return state
 }

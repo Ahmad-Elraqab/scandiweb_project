@@ -12,8 +12,8 @@ class AddToCart extends Component {
     }
 
     render() {
-        const { data, onClick, addToCart, state } = this.props
-
+        const { data, onClick, addToCart, state, currentCurrencyIndex } = this.props
+        const currency = data.prices.find((e) => e.currency === currentCurrencyIndex.name)
         return (
             <div className="panel">
 
@@ -28,7 +28,7 @@ class AddToCart extends Component {
 
                 <div style={{ textAlign: "start", marginBottom: "2rem" }}>
                     <p style={{ fontWeight: 700, fontSize: 18 }}>PRICE:</p>
-                    <p style={{ fontWeight: 700, fontSize: 24 }}>{data ? "$" + data.prices[0]['amount'] : null}</p>
+                    <p style={{ fontWeight: 700, fontSize: 24 }}>{data ? currentCurrencyIndex.symbol + currency.amount : null}</p>
                 </div>
 
                 <IconButton onclick={() => addToCart(data)} color={"white"} title={"ADD TO CART"} height={"25px"} type="text" borderRadius={"0px"} backgroundColor={"#5ECE7B"} padding={"1rem"} />
