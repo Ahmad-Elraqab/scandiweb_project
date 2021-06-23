@@ -14,8 +14,9 @@ class CartCard extends Component {
     }
 
     miniStyle = {
-        fontWeight: 400,
-        fontSize: 14,
+        fontWeight: "600",
+        fontSize: "12px !important",
+        width: "100%",
         margin: 0,
     }
 
@@ -23,12 +24,12 @@ class CartCard extends Component {
         borderTop: "1px solid white",
         borderBottom: "1px solid white",
         padding: "0rem",
+        width: "100%",
+        height: "150px",
         marginBottom: "2rem",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
-        alignContent: "space-between",
-        alignItems: "flex-start",
+
     }
 
     render() {
@@ -37,26 +38,28 @@ class CartCard extends Component {
 
         return (
             <div className="card_layout" style={this.props.isMini ? this.cardLayoutMini : null}>
-                <div className={"items"} style={{ width: "80%", display: "flex", justifyItems: "space-between", flexWrap: "wrap" }}>
-                    <div className="cart_card_header">
-                        <p style={this.props.isMini ? this.miniStyle : { fontWeight: 600, fontSize: 30, margin: 0 }}>{data ? data.name : null}</p>
-                    </div>
+
+                <div className="items">
+
+                    <p style={this.props.isMini ? this.miniStyle : { fontWeight: 600, fontSize: 30, margin: 0 }}>{data ? data.name : null}</p>
                     <br />
-                    <div style={this.props.isMini ? { width: "100%" } : { display: "flex", justifyItems: "space-between", width: "100%" }}>
-                        {data ? data.attributes.map((e) =>
-                            [<ProductSize data={e} onClick={updateData} state={data} />,
-                            data.activeAttributes.has(e.name) ? <h1></h1> : updateData(e.name, '')]
-                        ) : null}
-                    </div>
+                    <p style={this.props.isMini ? this.miniStyle : { fontWeight: 700, fontSize: 25, margin: 0 }}>{data ? "$" + data.prices[0].amount * data.count : null}</p>
+                    <br />
+
+                    {data ? data.attributes.map((e) =>
+                        [<ProductSize data={e} onClick={updateData} state={data} isMini={this.props.isMini} />,
+                        data.activeAttributes.has(e.name) ? null : updateData(e.name, '')]
+                    ) : null}
+
+
                 </div>
 
-
-                <div className="items" style={{ height: "200px" }}>
+                <div className="items" >
                     <ItemCard isMini={this.props.isMini} data={data} updateItem={updateItem} />
                 </div>
 
 
-            </div>
+            </div >
         )
     }
 }

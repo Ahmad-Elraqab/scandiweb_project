@@ -1,5 +1,6 @@
 .product_view {
     width: 60%;
+    height: 800px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -7,18 +8,23 @@
     ul {
         list-style: none;
         width: 20%;
-        height: 500px;
+        height: 80%;
+        overflow-y: auto;
+
         padding: 0;
 
         li {
             margin-bottom: 1rem;
 
-            img{
+            img {
                 height: 100%;
                 width: 100%;
-                object-fit: cover;
+                object-fit: contain;
             }
         }
+    }
+    ul::-webkit-scrollbar {
+        width: 12px;
     }
 
     .img_view {
@@ -27,7 +33,8 @@
         padding: 1rem;
         img {
             width: 100%;
-            height: 80%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }

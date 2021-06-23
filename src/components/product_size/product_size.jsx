@@ -13,38 +13,27 @@ class ProductSize extends Component {
         }
     }
 
-    sizeMini = {
-        width: "17px",
-        height: "17px",
-        border: "1px solid black",
-        padding: "0.2rem",
-        fontSize: "12px",
-        alignContent: "space-between",
-        marginRight: "0.5rem",
-        fontWeight: "400",
-        display: "flex",
-        flexDirection: "row",
-    }
-
 
     render() {
 
         const { data, onClick, state } = this.props
 
         return (
-            <div style={{ marginRight: "4rem" }}>
-                {
 
+            <div className={this.props.isMini ? "miniList" : "list"}>
+                {
                     data ? [
 
-                        <p style={{ textAlign: "start", fontWeight: 700, fontSize: 18 }}>{data.name}</p>,
+                        this.props.isMini ? null : <p style={{ textAlign: "start", fontWeight: 700, fontSize: 18 }}>{data.name}</p>,
 
-                        <div className="size_list" style={this.props.isMini ? { width: "150%", justifyContent: "start" } : null}>
+                        <div className="size_list">
                             {
                                 data ? data.items.map((g) => (
-                                    <div className={"item_con"} style={this.props.isMini ? this.sizeMini : null}
-                                        className={state.activeAttributes.get(data.name) === g.value ? "size selected" : 'size'}
-                                        onClick={() => onClick(data.name, g.value, state)}>{data.name === "Color" ? ntc.name(g.value)[1] : g.value}</div>
+                                    <div className={
+                                        this.props.isMini ? (state.activeAttributes.get(data.name) === g.value ? "sizeMini selected" : 'sizeMini') :
+                                            (state.activeAttributes.get(data.name) === g.value ? "size selected" : 'size')
+                                    }
+                                        onClick={() => onClick(data.name, g.value, state)}>{g.displayValue}</div>
                                 )) : null
                             }
                         </div >

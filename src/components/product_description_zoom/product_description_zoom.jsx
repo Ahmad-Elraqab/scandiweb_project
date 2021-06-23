@@ -10,11 +10,11 @@ class ProductDescriptionZoom extends Component {
         }
     }
 
-
     setIndex(data, e) {
         const index = data.gallery.indexOf(e)
         this.setState({ currentIndex: index })
     }
+
     render() {
         const { data } = this.props
 

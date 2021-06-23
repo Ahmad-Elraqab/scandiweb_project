@@ -19,11 +19,10 @@ class AddToCart extends Component {
 
                 <div style={{ textAlign: "start" }}>
                     <p style={{ fontWeight: 600, fontSize: 30, margin: 0 }}>{data.name}</p>
-                    <p style={{ fontWeight: 400, fontSize: 30, marginTop: 0 }}>{"There there"}</p>
                 </div>
 
                 {data ? data.attributes.map((e) =>
-                    [state.activeAttributes.has(e.name) ? <h1></h1> : onClick(e.name, ''),
+                    [state.activeAttributes.has(e.name) ? null : onClick(e.name, ''),
                     <ProductSize data={e} onClick={onClick} state={state} />]
                 ) : null}
 

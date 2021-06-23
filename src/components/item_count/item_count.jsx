@@ -13,15 +13,14 @@ class ItemCount extends Component {
     }
 
     itemSrcStyle = {
-        width: "75px",
-        height: "100%",
+        height: "150px",
+        width: "100px",
         marginLeft: "0.5rem",
     }
 
     imgStyle = {
-        height: "100%",
-        width: "90px",
-        objectFit: "cover",
+        height: "150px",
+        objectFit: "contain",
     }
     render() {
 
@@ -29,7 +28,7 @@ class ItemCount extends Component {
 
         return (
 
-            <div className="view">
+            <div className="view" style={this.props.isMini ? { height: "150px" } : null} >
                 <div className="item_column">
                     {
                         <div onClick={() => updateItem(data.id ? data.id : null, "+")}>

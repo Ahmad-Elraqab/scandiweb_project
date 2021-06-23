@@ -1,4 +1,5 @@
 export const addToCartUtil = (state, action) => {
+    state.cartItemCount += 1
 
     return {
         ...state,
@@ -6,7 +7,6 @@ export const addToCartUtil = (state, action) => {
     }
 
 }
-
 export const updateCartUtil = (state, action) => {
 
     action.products.activeAttributes.set(action.attribute, action.value)
@@ -30,9 +30,11 @@ export const updateCartItemUtil = (state, action) => {
 
     if (action.oper === "+") {
         product.count += 1
+        state.cartItemCount += 1
     } else {
         if (product.count > 0) {
             product.count -= 1
+            state.cartItemCount -= 1
             list.splice(index, 1, product)
         }
         if (product.count === 0) {
@@ -45,4 +47,16 @@ export const updateCartItemUtil = (state, action) => {
         ...state,
         products: [...list]
     }
+}
+
+export const updateTotal = (state) => {
+
+    var total = 0.0
+    state.products.forEach(e => {
+        total += e.prices[0].amount * e.count
+    });
+    state.total = total
+
+    console.log(total)
+    return state
 }

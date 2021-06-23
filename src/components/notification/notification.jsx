@@ -4,6 +4,7 @@ import IconButton from "../../components/icon_button/icon_button"
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleCart } from "../../redux/navigation/navigation_action";
+import { updateCart, updateCartItem } from "../../redux/cart/cart_action"
 import "./notification.scss"
 
 class Notification extends Component {
@@ -14,36 +15,38 @@ class Notification extends Component {
     }
     notificationStyle = new Map()
     render() {
-        const { isCartOpen } = this.props
+        const { isCartOpen, products, updateCartItem, updateCart, cartItemCount, total } = this.props
 
 
         return (
 
-            <div style={{ display: isCartOpen ? "block" : "none" }} className="notification-body">
+            <div style={{ display: isCartOpen ? "flex" : "none" }} className="notification-body">
 
-                <p><b>My Bag</b>, 2 items</p>
+                {cartItemCount === 0 ? null : <p><b>My Bag</b>, {cartItemCount} items</p>}
                 <br />
-                <div className="pos">
-
-                    <CartCard isMini={true} />
-                    <CartCard isMini={true} />
-                    <CartCard isMini={true} />
-                    <CartCard isMini={true} />
-                </div>
+                {cartItemCount === 0 ? <h4>cart is empty <br /> add some items</h4> :
+                    <div className="pos">
+                        {
+                            products ? products.map((e) => (
+                                <CartCard isMini={true} data={e} updateData={updateCart} updateItem={updateCartItem} />
+                            )) : null
+                        }
+                    </div>
+                }
                 <br />
-                <div className="total">
+                {cartItemCount === 0 ? null : <div className="total">
                     <p>Total</p>
-                    <p>$100.00</p>
-                </div>
+                    <p>{"$" + total}</p>
+                </div>}
                 <br />
-                <div className="checkout_btn">
-                    <Link to="/cart" style={{ textDecoration: "none" }} onClick={this.props.toggleCart}>
+                {cartItemCount === 0 ? null : <div className="checkout_btn">
+                    <Link to="/cart" style={{ textDecoration: "none", width: "100%", color: "black" }} onClick={this.props.toggleCart}>
                         <IconButton title={"VIEW BAG"} width={"75%"} padding={".9rem"} type="text" borderRadius={"0px"} isBorder={true} onclick={() => null} />
                     </Link>
                     <div style={{ width: "10px" }}></div>
                     <IconButton title={"CHECKOUT"} width={"75%"} padding={"1rem"} color={"white"} backgroundColor={"#5ECE7B"} type="text" borderRadius={"0px"} />
 
-                </div>
+                </div>}
 
             </div>
         )
@@ -51,15 +54,20 @@ class Notification extends Component {
 }
 
 
-const mapStateToProps = ({ navigationReducer }) => ({
+const mapStateToProps = ({ navigationReducer, cartReducer }) => ({
     isCartOpen: navigationReducer.isCartOpen,
     isCurrencyOpen: navigationReducer.isCurrencyOpen,
+    products: cartReducer.products,
+    cartItemCount: cartReducer.cartItemCount,
+    total: cartReducer.total
 });
 
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        toggleCart: () => { dispatch(toggleCart()) }
+        toggleCart: () => { dispatch(toggleCart()) },
+        updateCart: (value1, value2, value3) => { dispatch(updateCart(value1, value2, value3)) },
+        updateCartItem: (value1, value2) => { dispatch(updateCartItem(value1, value2)) }
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Notification)

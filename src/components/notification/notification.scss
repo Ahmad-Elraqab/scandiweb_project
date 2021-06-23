@@ -1,18 +1,27 @@
 .notification-body {
     position: absolute;
-    width: 300px;
+    width: 350px;
     height: 530px;
     right: 45%;
     // display: none;
     background-color: white;
     z-index: 5;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
     text-align: "start";
+
+    p {
+        text-align: start;
+    }
 }
 
 .pos {
     position: relative;
     height: 300px;
+    padding: 0;
     overflow: auto;
 }
 /* Works on Chrome, Edge, and Safari */
@@ -21,14 +30,18 @@
 }
 
 .checkout_btn {
-    width: 95%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     color: black;
     justify-content: space-between;
     align-content: center;
-    text-align: center;
+    text-align: center !important;
     font-size: 14px;
+
+    p {
+        text-align: center;
+    }
 }
 .total {
     width: 95%;

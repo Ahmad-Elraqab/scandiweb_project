@@ -19,16 +19,16 @@ class Cart extends Component {
 
     render() {
 
-        const { products, updateCart, updateCartItem } = this.props
+        const { products, updateCart, updateCartItem, cartItemCount } = this.props
 
         return (
-            <div className="cart">
+            <div className="cart" >
                 <p className="innerText">CART</p>
                 {
-                    products ? products.map((e) =>
+                    cartItemCount !== 0 ? products ? products.map((e) =>
                         <CartCard data={e} updateData={updateCart} updateItem={updateCartItem} />
                     ) : null
-
+                        : <h3>cart is empty <br />add some items</h3>
                 }
 
             </div>
@@ -38,6 +38,7 @@ class Cart extends Component {
 }
 const mapStateToProps = ({ cartReducer }) => ({
     products: cartReducer.products,
+    cartItemCount: cartReducer.cartItemCount
 });
 
 const mapDispatchToProps = (dispatch) => {

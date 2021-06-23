@@ -5,14 +5,19 @@ import "./product_description.scss"
 import { setNextRoute } from "../../redux/category/category_action"
 import { connect } from "react-redux";
 import { addToCart } from "../../redux/cart/cart_action"
-// import { Redirect } from 'react-router-dom'
 import shorid from "shortid"
+import history from '../../redux/history';
 
 class ProductDescription extends Component {
 
 
     constructor() {
         super()
+        if (window.performance) {
+            if (performance.navigation.type == 1) {
+                history.push('/');
+            }
+        }
         this.state = {
             activeAttributes: new Map()
         }

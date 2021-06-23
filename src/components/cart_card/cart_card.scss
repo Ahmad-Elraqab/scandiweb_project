@@ -5,14 +5,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-content: space-between;
     align-items: flex-start;
-    max-height: 200px;
+    width: 100%;
 }
 
 .items {
-    text-align: start;
+    width: 50%;
+    height: 100%;
     display: flex;
-    align-content: space-between;
+    text-align: start;
     flex-direction: column;
     justify-content: space-between;
 }
