@@ -54,3 +54,10 @@
         }
     }
 }
+
+@media only screen and (max-width: 800px) {
+    .product_view {
+        width: 100%;
+        height: 400px;
+    }
+}

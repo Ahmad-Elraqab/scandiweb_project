@@ -18,3 +18,17 @@
     justify-content: space-between;
     align-items: center;
 }
+
+
+@media only screen and (max-width: 1200px) {
+    .products_grid {
+        grid-template-columns: 390px 390px;
+        margin: 0 auto;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .products_grid {
+        grid-template-columns: 390px;
+        margin: 0 auto;
+    }
+}

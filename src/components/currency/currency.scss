@@ -18,3 +18,9 @@
         text-align: start;
     }
 }
+
+@media only screen and (max-width: 800px) {
+    .currency-body {
+        right: 20%;
+    }
+}

@@ -76,3 +76,15 @@
         }
     }
 }
+
+@media only screen and (max-width: 800px) {
+    .navigation_options {
+        width: auto;
+    }
+    .logo_div {
+        width: auto;
+    }
+    .navigation_list {
+        width: auto;
+    }
+}
