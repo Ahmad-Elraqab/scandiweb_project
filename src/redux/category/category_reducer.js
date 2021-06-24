@@ -5,7 +5,7 @@ const initState = {
     loading: false,
     currentCategory: "",
     currentPage: 1,
-    selectedProduct: "",
+    selectedProduct: null,
     categories: [
 
     ],
@@ -51,6 +51,14 @@ const categoryReducer = (state = initState, action) => {
 
                     ...state,
                     selectedProduct: state.products.get(state.currentCategory).filter(e => e.name === action.value)[0]
+                }
+            }
+        case CategoryActionType.RELEASE_SELECTED_PRODUCT:
+            {
+                return {
+
+                    ...state,
+                    selectedProduct: null
                 }
             }
 

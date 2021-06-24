@@ -59,3 +59,9 @@ export const setCategoryAndProducts = (data) => {
     }
 
 }
+
+export const releaseSelectedProduct = () => ({
+
+    type: CategoryActionType.RELEASE_SELECTED_PRODUCT
+
+})

@@ -15,16 +15,16 @@ class AddToCart extends Component {
         const { data, onClick, addToCart, state, currentCurrencyIndex } = this.props
         var currency = ''
         data ? currency = data.prices.find((e) => e.currency === currentCurrencyIndex.name) : currency = ''
-        console.log(currency)
 
         return (
             <div className="panel">
 
+
                 <div style={{ textAlign: "start" }}>
-                    <p style={{ fontWeight: 600, fontSize: 30, margin: 0 }}>{data.name}</p>
+                    <p style={{ fontWeight: 600, fontSize: 30, margin: 0 }}>{data !== null ? data.name : null}</p>
                 </div>
 
-                {data ? data.attributes.map((e) =>
+                {data !== null ? data.attributes.map((e) =>
                     [state.activeAttributes.has(e.name) ? null : onClick(e.name, ''),
                     <ProductSize data={e} onClick={onClick} state={state} />]
                 ) : null}
@@ -34,10 +34,16 @@ class AddToCart extends Component {
                     <p style={{ fontWeight: 700, fontSize: 24 }}>{currentCurrencyIndex.symbol + currency.amount}</p>
                 </div>
 
-                <IconButton onclick={() => addToCart(data)} color={"white"} title={"ADD TO CART"} height={"25px"} type="text" borderRadius={"0px"} backgroundColor={"#5ECE7B"} padding={"1rem"} />
+                {
+                    data !== null ?
+                        <IconButton onclick={data.inStock ? () => addToCart(data) : () => null} color={"white"}
+                            title={"ADD TO CART"} height={"25px"} type="text"
+                            borderRadius={"0px"} backgroundColor={data.inStock ? "#5ECE7B" : "#dddddd"} padding={"1rem"} />
+                        : null
+                }
 
                 <br />
-                <p style={{ textAlign: "start" }}>{parse("" + data.description)}</p>
+                {data !== null ? <p style={{ textAlign: "start" }}>{parse("" + data.description)}</p> : null}
 
             </div >
         )

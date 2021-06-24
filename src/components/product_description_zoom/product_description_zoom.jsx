@@ -20,7 +20,7 @@ class ProductDescriptionZoom extends Component {
 
         return (
             < div className={"product_view"} >
-                {data ? data.gallery.length > 2
+                {data !== null ? data.gallery.length > 2
                     ? <ul>
                         {
                             data ? data.gallery.map(e =>
@@ -30,7 +30,7 @@ class ProductDescriptionZoom extends Component {
                     </ul>
                     : null : null
                 }
-                <div className="img_view">
+                <div className={data !== null ? data.inStock ? "img_view" : "img_view outStock" : null} data-out-stock="OUT OF STOCK">
                     <img src={data ? data.gallery[this.state.currentIndex] : null} alt="" />
                 </div>
             </div >

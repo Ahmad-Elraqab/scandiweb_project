@@ -31,7 +31,7 @@ class CategoryCard extends Component {
 
         return (
             <div className="product">
-                <div className={"img_div " + (data.inStock == true ? "" : "outStock")} data-out-stock="OUT OF STOCK" >
+                <div className={data.inStock ? "img_div " : "img_div outStock"} data-out-stock="OUT OF STOCK" >
                     <Link to={"/product_description/" + data.name} >
                         <img className={"background_img"} src={data.gallery[0]} alt="" />
                     </Link>

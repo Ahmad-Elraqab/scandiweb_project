@@ -3,6 +3,7 @@ import ProductDescriptionZoom from "../../components/product_description_zoom/pr
 import AddToCart from "../../components/add_to_cart/add_to_cart"
 import "./product_description.scss"
 import { setNextRoute } from "../../redux/category/category_action"
+import { releaseSelectedProduct } from "../../redux/category/category_action"
 import { connect } from "react-redux";
 import { addToCart } from "../../redux/cart/cart_action"
 import shorid from "shortid"
@@ -48,6 +49,13 @@ class ProductDescription extends Component {
         // return <Redirect to='/cart' />
     }
 
+    componentWillUnmount() {
+
+        const { releaseSelectedProduct } = this.props
+
+        releaseSelectedProduct()
+
+    }
 
     render() {
 
@@ -58,7 +66,8 @@ class ProductDescription extends Component {
         return (
             < div className="product_description" >
                 <ProductDescriptionZoom data={selectedProduct} />
-                <AddToCart data={selectedProduct} addToCart={this.addToCart} onClick={this.onClick} state={this.state} currentCurrencyIndex={currentCurrencyIndex} />
+                <AddToCart data={selectedProduct} addToCart={this.addToCart} onClick={this.onClick}
+                    state={this.state} currentCurrencyIndex={currentCurrencyIndex} />
             </div >
         )
     }
@@ -73,7 +82,8 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         setNextRoute: (value) => { dispatch(setNextRoute(value)) },
-        addToCart: (value) => { dispatch(addToCart(value)) }
+        addToCart: (value) => { dispatch(addToCart(value)) },
+        releaseSelectedProduct: () => { dispatch(releaseSelectedProduct()) }
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDescription)
