@@ -31,9 +31,11 @@ class Navigation extends Component {
 
                 </ul>
 
-                <div className="logo_div">
-                    <img src={logo} alt="" />
-                </div>
+                <Link to="/">
+                    <div className="logo_div">
+                        <img src={logo} alt="" />
+                    </div>
+                </Link>
 
                 <ul className="navigation_options">
                     <li><IconButton imgSrc={currentCurrencyIndex.symbol} width={"25px"} height={"25px"} type="dropdown" borderRadius={"60%"} onclick={toggleCurrency} /></li>

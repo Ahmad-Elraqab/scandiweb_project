@@ -51,10 +51,9 @@ const cartReducer = (state = initState, action) => {
             }
         case CartActionType.CHANGE_CURRENCY:
             {
-                return {
-                    ...updateTotal(state),
-                    currentCurrencyIndex: action.data
-                }
+                const newState = { ...state, currentCurrencyIndex: action.data }
+
+                return updateTotal(newState)
             }
 
 
