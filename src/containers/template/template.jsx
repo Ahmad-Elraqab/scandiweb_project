@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Navigation from "../../components/navigation/navigation"
 import Currency from "../../components/currency/currency"
-import Notification from "../../components/notification/notification"
+import MiniCart from "../../components/mini_cart/mini_cart"
 import { fetchProducts } from "../../redux/category/category_action"
 import { setRoute } from "../../redux/category/category_action"
 import { connect } from "react-redux";
@@ -45,7 +45,7 @@ class Template extends Component {
                 {this.props.children}
 
                 <div style={{ display: isCartOpen ? "block" : "none" }} className="notification">
-                    <Notification currentCurrencyIndex={currentCurrencyIndex} total={total} cartItemCount={cartItemCount} products={products}
+                    <MiniCart currentCurrencyIndex={currentCurrencyIndex} total={total} cartItemCount={cartItemCount} products={products}
                         isCartOpen={isCartOpen} isCurrencyOpen={isCurrencyOpen} updateCartItem={updateCartItem} updateCart={updateCart} toggleCart={toggleCart} />
                 </div>
 

@@ -1,10 +1,10 @@
 import React, { Component } from "react"
 import CartCard from "../cart_card/cart_card"
-import IconButton from "../../components/icon_button/icon_button"
+import IconButton from "../icon_button/icon_button"
 import { Link } from "react-router-dom";
-import "./notification.scss"
+import "./mini_cart.scss"
 
-class Notification extends Component {
+class MiniCart extends Component {
 
     constructor({ props }) {
         super(props)
@@ -53,4 +53,4 @@ class Notification extends Component {
     }
 }
 
-export default Notification
+export default MiniCart
