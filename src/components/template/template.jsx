@@ -7,8 +7,9 @@ import { setRoute } from "../../redux/category/category_action"
 import { connect } from "react-redux";
 import { fetchCurrencies } from "../../redux/cart/cart_action"
 import { changeCurrency } from "../../redux/cart/cart_action"
-
+import { toggleCurrency } from "../../redux/navigation/navigation_action"
 import "./template.scss"
+
 
 class Template extends Component {
 
@@ -24,7 +25,7 @@ class Template extends Component {
     }
 
     render() {
-        const { setRoute, categories, currentCategory, isCartOpen, currencies, isCurrencyOpen, changeCurrency } = this.props;
+        const { setRoute, categories, currentCategory, isCartOpen, currencies, isCurrencyOpen, changeCurrency, toggleCurrency } = this.props;
 
 
         return (
@@ -40,7 +41,7 @@ class Template extends Component {
                     <Notification />
                 </div>
 
-                <Currency currencies={currencies} isCurrencyOpen={isCurrencyOpen} changeCurrency={changeCurrency} />
+                <Currency currencies={currencies} isCurrencyOpen={isCurrencyOpen} changeCurrency={changeCurrency} toggleCurrency={toggleCurrency} />
             </div>
         )
     }
@@ -61,7 +62,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchProducts: () => dispatch(fetchProducts()),
         setRoute: (value) => dispatch(setRoute(value)),
         fetchCurrencies: () => dispatch(fetchCurrencies()),
-        changeCurrency: (value) => dispatch(changeCurrency(value))
+        changeCurrency: (value) => dispatch(changeCurrency(value)),
+        toggleCurrency: () => dispatch(toggleCurrency())
 
     }
 }

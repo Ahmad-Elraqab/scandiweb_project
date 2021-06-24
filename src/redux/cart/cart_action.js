@@ -37,7 +37,7 @@ export const loadCurrency = (data) => ({
 })
 
 export const changeCurrency = (data) => ({
-
+    
     type: CartActionType.CHANGE_CURRENCY,
     data
 
