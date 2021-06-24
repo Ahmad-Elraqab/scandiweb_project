@@ -37,17 +37,15 @@ class IconButton extends Component {
         const { onclick, cartCount } = this.props
 
         return (
-            <div className="parent" onClick={() => onclick()}>
+            <div className="parent" onClick={onclick === undefined ? null : () => onclick()}>
 
                 {this.props.type === "dropdown" ? <div className={"currency"} style={this.props.isMini ? this.parentMini : this.style} >
-                    <img style={this.props.isMini ? this.childMiniStyle : null} src={this.props.imgSrc} alt="" /></div> : null}
+                    {this.props.imgSrc}</div> : null}
 
-                {/* setCurrency add this class when the mini cart is opened */}
 
                 {this.props.type === "notifier" ? <div className={cartCount === 0 ? "state setState" : "state"} data-value={cartCount} style={this.props.isMini ? this.parentMini : this.style}>
                     <img style={this.props.isMini ? this.childMiniStyle : null} className src={this.props.imgSrc} alt="" /></div> : null}
 
-                {/* setState add this class when the value of cart is 0 */}
 
                 {this.props.type === "normal" ? <div className="normal" style={this.props.isMini ? this.parentMini : this.style}>
                     <img style={this.props.isMini ? this.childMiniStyle : null} className src={this.props.imgSrc} alt="" /></div> : null}

@@ -18,7 +18,7 @@ class Navigation extends Component {
     }
 
     render() {
-        const { toggleCart, toggleCurrency, cartItemCount } = this.props
+        const { toggleCart, toggleCurrency, cartItemCount, currentCurrencyIndex } = this.props
         return (
             <div className="navigation">
                 <ul className="navigation_list">
@@ -40,7 +40,7 @@ class Navigation extends Component {
                 </div>
 
                 <ul className="navigation_options">
-                    <li><IconButton imgSrc={currencyIcon} width={"25px"} height={"25px"} type="dropdown" borderRadius={"60%"} onclick={toggleCurrency} /></li>
+                    <li><IconButton imgSrc={currentCurrencyIndex.symbol} width={"25px"} height={"25px"} type="dropdown" borderRadius={"60%"} onclick={toggleCurrency} /></li>
                     <li><IconButton imgSrc={cartIcon} width={"25px"} height={"25px"} type="notifier" borderRadius={"60%"} onclick={toggleCart} cartCount={cartItemCount} /></li>
                 </ul>
 
@@ -52,6 +52,7 @@ class Navigation extends Component {
 
 const mapStateToProps = ({ navigationReducer, cartReducer }) => ({
     cartItemCount: cartReducer.cartItemCount,
+    currentCurrencyIndex: cartReducer.currentCurrencyIndex
 });
 
 const mapDispatchToProps = (dispatch) => {
