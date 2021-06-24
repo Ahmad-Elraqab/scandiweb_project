@@ -31,9 +31,11 @@ class CategoryCard extends Component {
 
         return (
             <div className="product">
-                <div className={data.inStock ? "img_div " : "img_div outStock"} data-out-stock="OUT OF STOCK" >
+                <div className="img_div">
                     <Link to={"/product_description/" + data.name} >
-                        <img className={"background_img"} src={data.gallery[0]} alt="" />
+                        <div className={data.inStock ? "img_div_click " : "img_div_click outStock"} data-out-stock="OUT OF STOCK" >
+                            <img className={"background_img"} src={data.gallery[0]} alt="" />
+                        </div>
                     </Link>
                     <div className="btn" onClick={() => this.handleClick(data, addToCart)}>
                         {data.inStock == true ?
