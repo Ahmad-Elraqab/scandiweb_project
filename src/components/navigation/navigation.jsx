@@ -2,11 +2,7 @@ import React, { Component } from "react"
 import "./navigation.scss"
 import IconButton from "../icon_button/icon_button"
 import logo from "../../assets/icons/logo.png"
-import currencyIcon from "../../assets/icons/$.svg"
 import cartIcon from "../../assets/icons/Vector.svg"
-import { connect } from "react-redux";
-import { toggleCart } from "../../redux/navigation/navigation_action"
-import { toggleCurrency } from "../../redux/navigation/navigation_action"
 import { Link } from "react-router-dom";
 
 class Navigation extends Component {
@@ -49,19 +45,4 @@ class Navigation extends Component {
     }
 }
 
-
-const mapStateToProps = ({ navigationReducer, cartReducer }) => ({
-    cartItemCount: cartReducer.cartItemCount,
-    currentCurrencyIndex: cartReducer.currentCurrencyIndex
-});
-
-const mapDispatchToProps = (dispatch) => {
-
-    return {
-
-        toggleCurrency: () => dispatch(toggleCurrency()),
-        toggleCart: () => dispatch(toggleCart()),
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
-
+export default Navigation

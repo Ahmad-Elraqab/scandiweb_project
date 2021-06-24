@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { toggleCurrency } from "../../redux/navigation/navigation_action"
 import "./currency.scss"
 
 class Currency extends Component {

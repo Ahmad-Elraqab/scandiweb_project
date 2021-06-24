@@ -1,10 +1,7 @@
 import React, { Component } from "react"
 import CartCard from "../cart_card/cart_card"
 import IconButton from "../../components/icon_button/icon_button"
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { toggleCart } from "../../redux/navigation/navigation_action";
-import { updateCart, updateCartItem } from "../../redux/cart/cart_action"
 import "./notification.scss"
 
 class Notification extends Component {
@@ -14,8 +11,11 @@ class Notification extends Component {
         this.state = props
     }
     notificationStyle = new Map()
+    // <Notification currentCurrencyIndex={currentCurrencyIndex} total={total} cartItemCount={cartItemCount} products={products}
+    // isCartOpen={isCartOpen} isCurrencyOpen={isCurrencyOpen} updateCartItem={updateCartItem} updateCart={updateCart} toggleCart={toggleCart} />
     render() {
-        const { isCartOpen, products, updateCartItem, updateCart, cartItemCount, total, currentCurrencyIndex } = this.props
+        const { currentCurrencyIndex, total, cartItemCount, products, isCartOpen,
+            isCurrencyOpen, updateCartItem, updateCart, toggleCart } = this.props
 
 
         return (
@@ -40,7 +40,7 @@ class Notification extends Component {
                 </div>}
                 <br />
                 {cartItemCount === 0 ? null : <div className="checkout_btn">
-                    <Link to="/cart" style={{ textDecoration: "none", width: "100%", color: "black" }} onClick={this.props.toggleCart}>
+                    <Link to="/cart" style={{ textDecoration: "none", width: "100%", color: "black" }} onClick={toggleCart}>
                         <IconButton title={"VIEW BAG"} width={"75%"} padding={".9rem"} type="text" borderRadius={"0px"} isBorder={true} onclick={() => null} />
                     </Link>
                     <div style={{ width: "10px" }}></div>
@@ -53,23 +53,4 @@ class Notification extends Component {
     }
 }
 
-
-const mapStateToProps = ({ navigationReducer, cartReducer }) => ({
-    isCartOpen: navigationReducer.isCartOpen,
-    isCurrencyOpen: navigationReducer.isCurrencyOpen,
-    products: cartReducer.products,
-    cartItemCount: cartReducer.cartItemCount,
-    total: cartReducer.total,
-    currentCurrencyIndex: cartReducer.currentCurrencyIndex
-});
-
-const mapDispatchToProps = (dispatch) => {
-
-    return {
-        toggleCart: () => { dispatch(toggleCart()) },
-        updateCart: (value1, value2, value3) => { dispatch(updateCart(value1, value2, value3)) },
-        updateCartItem: (value1, value2) => { dispatch(updateCartItem(value1, value2)) }
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Notification)
-
+export default Notification

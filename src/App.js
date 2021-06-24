@@ -3,7 +3,7 @@ import { Route, BrowserRouter } from "react-router-dom"
 import Category from "../src/containers/category/category"
 import ProductDescription from "../src/containers/product_description/product_description"
 import Cart from "../src/containers/cart/cart"
-import Template from "./components/template/template"
+import Template from "./containers/template/template"
 
 
 function App() {
