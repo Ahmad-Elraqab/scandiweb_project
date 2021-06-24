@@ -7,9 +7,11 @@ import "./item_count.scss"
 class ItemCount extends Component {
 
 
-    constructor({ props }) {
+    constructor(props) {
         super(props)
-        this.state = props
+        this.state = {
+            currentIndex: 0
+        }
     }
 
     itemSrcStyle = {
@@ -22,6 +24,25 @@ class ItemCount extends Component {
         height: "150px",
         objectFit: "contain",
     }
+
+    changePhoto = (length, type) => {
+
+        var value = 0
+
+        if (this.state.currentIndex === length && type === "next") {
+            value = 0
+        }
+        else if (this.state.currentIndex === 0 && type === "before") {
+            value = length
+        } else if (type === "next") {
+            value = this.state.currentIndex + 1
+        } else {
+            value = this.state.currentIndex - 1
+        }
+
+        this.setState({ currentIndex: value })
+    }
+
     render() {
 
         const { data, updateItem } = this.props
@@ -47,9 +68,14 @@ class ItemCount extends Component {
                         </div>
                     }
                 </div>
-
                 <div style={this.props.isMini ? this.itemSrcStyle : null} className="item_src">
-                    <img style={this.props.isMini ? this.imgStyle : null} src={data ? data.gallery[0] : null} alt="" />
+                    {!this.props.isMini ? data.gallery.length == 1 ? null :
+
+                        [<div className="arrow-right" onClick={() => this.changePhoto(data.gallery.length - 1, "next")}></div>,
+                        <div className="arrow-left" onClick={() => this.changePhoto(data.gallery.length - 1, "before")}></div>] : null}
+
+                    <img style={this.props.isMini ? this.imgStyle : null} src={data ? data.gallery[this.state.currentIndex] : null} alt="" />
+
                 </div>
 
             </div >

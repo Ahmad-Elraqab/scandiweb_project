@@ -19,11 +19,43 @@
     height: 100%;
     width: 150px;
     margin-left: 1rem;
+    position: relative;
 
     img {
         height: 100%;
         width: 100%;
         object-fit: contain;
+    }
+
+    .arrow-right {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 40%;
+        object-fit: cover;
+        right: 10px;
+        background-image: url("../../assets/icons/chevron-right.svg");
+        transition: 0.2s all ease-in-out;
+        transform: scale(1);
+        &:hover {
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+    }
+    .arrow-left {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 40%;
+        object-fit: cover;
+        left: 10px;
+        background-image: url("../../assets/icons/chevron-left.svg");
+        transition: 0.2s all ease-in-out;
+        transform: scale(1);
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.3);
+        }
     }
 }
 
