@@ -7,7 +7,7 @@ import {
 } from "@apollo/client";
 
 const client = new ApolloClient({
-    uri: 'https://ecommerce-app-server-apollo.herokuapp.com/',
+    uri: 'https://ecommerce-service-backend.onrender.com/',
     cache: new InMemoryCache()
 });
 
